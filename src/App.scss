@@ -1,0 +1,14 @@
+@import './styles/variables';
+
+.App {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: $colour-torch-inactive;
+  background: $colour-torch-inactive-gradient;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+  align-content: center;
+  justify-content: center;
+}

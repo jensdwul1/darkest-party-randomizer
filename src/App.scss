@@ -6,9 +6,32 @@
   text-align: center;
   background: $colour-torch-inactive;
   background: $colour-torch-inactive-gradient;
+  border: 0.5rem $colour-torch-inactive-dark solid;
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 0.5rem;
   align-content: center;
   justify-content: center;
+  transition: 500ms ease-in-out;
+  &.state-1,
+  &.state-2,
+  &.state-3 {
+    border: 0.5rem $colour-torch-active-dark solid;
+    background: $colour-torch-active;
+    background: $colour-torch-active-gradient;
+  }
+  main {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
 }

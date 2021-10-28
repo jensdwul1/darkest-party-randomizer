@@ -1,7 +1,8 @@
 import React from 'react';
 
-import torchActive from './assets/torch-active.svg';
-import torchInactive from './assets/torch-inactive.svg';
+import { ReactComponent as TorchActive } from './assets/torch-active.svg';
+import { ReactComponent as TorchInactive } from './assets/torch-inactive.svg';
+import { ReactComponent as SvgDefs } from './assets/svg-definitions.svg';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import styles from './Torch.module.scss';
@@ -51,26 +52,16 @@ const Torch = () => {
         }
     }
   }
-  let flame;
-  if(torch !== TorchStatus.Doused){
-    flame = (
-    <div className={styles.FireGroup}>
-      <div className={styles.Light}></div>
-      <div className={styles.Fire}>
-        <div className={styles.FireBack}></div>
-        <div className={styles.FireMedium}></div>
-        <div className={styles.FireFront}></div>
-      </div>
-    </div>
-   );
+  let torchIcon;
+  if(torch === TorchStatus.Doused){
+    torchIcon = <TorchInactive className={styles.TorchImage} title="The Torch"  />
   } else {
-    flame = '';
+    torchIcon = <TorchActive className={`${styles.TorchImage} ${styles['state-'+torch]}`} title="The Torch"  />
   }
   return (
     <div className={`${styles.Torch} ${styles['state-'+torch]}`} onClick={() => {torchWasTouched()}} role="button">
-       {flame}
-       <img src={torchInactive} className={styles.TorchImage} alt="The Torch" />
-       <div>Torch :: {torch}</div>
+        <SvgDefs className="hidden"/>
+       {torchIcon}
     </div>
   );
 }

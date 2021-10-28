@@ -5,10 +5,12 @@ $colour-primary-gradient: linear-gradient(135deg, $colour-primary-light 0%, $col
 $colour-secondary: rgba(126, 16, 0, 1);
 $colour-dark: rgba(11,11,11,1);
 $colour-torch-active: rgba(252,113,52,1);
+$colour-torch-active-tint: rgba(254, 92, 43, 1);
 $colour-torch-active-light:rgba(252,176,69,1);
-$colour-torch-active-darker: rgb(231, 80, 15);
+$colour-torch-active-darkest: rgba(52, 39, 33, 1);
+$colour-torch-active-darker: rgba(138,21,4,1);
 $colour-torch-active-dark: rgba(253,29,29,1);
-$colour-torch-active-gradient: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(252,176,69,1) 1%, rgba(253,29,29,1) 90%, rgba(253,29,29,0) 100%);
+$colour-torch-active-gradient: radial-gradient(circle at center, $colour-torch-active-tint 0%, $colour-torch-active-darker 50%, $colour-torch-active-darkest 100%);
 $colour-torch-inactive: rgba(54, 65, 111, 1);
 $colour-torch-inactive-light:rgba(116, 134, 209, 1);
 $colour-torch-inactive-dark: rgba(50, 55, 100,1);

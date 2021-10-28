@@ -1,0 +1,25 @@
+<svg class="svg-def">
+  <defs>
+
+    <!-- a glow that takes on the stroke color of the object it's applied to -->
+    <filter id="strokeGlow" y="-10" x="-10" width="250" height="150">
+
+      <feOffset in="StrokePaint" dx="0" dy="0" result="centeredOffset"></feOffset>
+
+      <feGaussianBlur in="centeredOffset" stdDeviation="2" result="blur1"></feGaussianBlur>
+      <feGaussianBlur in="centeredOffset" stdDeviation="5" result="blur2"></feGaussianBlur>
+      <feGaussianBlur in="centeredOffset" stdDeviation="15" result="blur3"></feGaussianBlur>
+
+      <feMerge>
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="blur1"></feMergeNode>
+        <feMergeNode in="blur2"></feMergeNode>
+        <feMergeNode in="blur3"></feMergeNode>
+
+        <!-- this contains the element that the filter is applied to -->
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+  </defs>
+</svg>

@@ -4,102 +4,10 @@
     cursor: pointer;
     user-select: none;
     position: relative;
-}
-.FireGroup {
-    position: absolute;
-    top: 0;
-    left: 5vmin;
-    width: 30vmin;
-    height: 30vmin;
-}
-.Fire {
-    width: 16vmin;
-    height: 16vmin;
-    position: absolute;
-    bottom: 6vmin;
-    left: 7vmin;
-}
-.FireBack {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 100%;
-    background: $colour-torch-active-light;
-    border-radius: 0 75% 75% 75%;
-    transform: rotate(45deg);
-    animation: fire 2s linear infinite alternate;
-    animation-delay: 1s;
-}
-.FireMedium {   
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
-    width: 80%;
-    padding-bottom: 80%;
-    background: $colour-torch-active;
-    border-radius: 0 75% 75% 75%;
-    transform: rotate(45deg);
-    animation: fire 2s linear infinite alternate;
-    animation-delay: .5s;
-}
-.FireFront {
-    position: absolute;
-    bottom: 10%;
-    left: 20%;
-    width: 60%;
-    padding-bottom: 60%;
-    background: $colour-torch-active-dark;
-    border-radius: 0 75% 75% 75%;
-    transform: rotate(45deg);
-    animation: fire 2s linear infinite alternate;
-}
-.Light {
-  position: absolute;
-  bottom: 7vmin;
-  left: -10vmin;
-  width: 50vmin;
-  padding-bottom: 50vmin;
-  border-radius: 50%;
-  background: $colour-torch-active-darker;
-  animation: light 2s linear infinite alternate;
-  background-blend-mode: overlay, soft-light;
-}
-.Light::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    padding-bottom: 90%;
-    border-radius: 50%;
-    background: $colour-torch-active;
-    opacity: .3;
-    background-blend-mode: overlay, soft-light;
-}
-.Light::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 12.5%;
-    width: 75%;
-    padding-bottom: 75%;
-    border-radius: 50%;
-    background: $colour-torch-active-light;
-    opacity: .5;
-    background-blend-mode: overlay, soft-light;
+    display: flex;
+    align-items: center;
 }
 
-
-.state-1::before,
-.state-2::before,
-.state-3::before {
-    background: $colour-torch-active;
-    background: $colour-torch-active-gradient;
-    background-size: 50%;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
 .TorchImage {
     height: 40vmin;
     pointer-events: none;
@@ -107,21 +15,23 @@
     position: relative;
 }
 @media (prefers-reduced-motion: no-preference) {
-    .state-0,
-    .state-1 {
+    .state-0 {
         animation: Icon-float infinite 3s ease-in-out;
     }
-    .state-1::before {
-        animation: Light-dimming infinite 4s ease-in-out;
+    .state-1 {
+        animation: dimming infinite 4s ease-in-out;
     }
     
-    .state-2::before {
-        animation: Light-burning infinite 4s ease-in-out;
+    .state-2 {
+        animation: burning infinite 4s ease-in-out;
 
     }
-    .state-3::before {
-        animation: Light-flaring infinite 500ms ease-in-out;
+    .state-3 {
+        animation: flaring infinite 500ms ease-in-out;
 
+    }
+    .TorchImage .flame {
+        animation: flaming infinite 4s ease-in-out;
     }
 }
 @keyframes Icon-float {
@@ -136,12 +46,40 @@
     }
 }
 
-@keyframes light {
-    0%   {opacity: .5; transform: translate(0px) scale(1)}
-    100% {opacity: .3; transform: translateY(-1vmin) scaleX(.9)}
-  }
   
-  @keyframes fire {
-    0%   {opacity: 1; transform: scale(1) rotate(45deg)}
-    100% {opacity: .8; transform: scale(.9) rotate(45deg)}
-  }
+@keyframes dimming {
+    0%   {
+        transform: translateY(0);
+        filter: drop-shadow( 0 0 0.125rem #fff) drop-shadow( 0 0 0.35rem $colour-torch-active) drop-shadow( 0 0 0.625rem $colour-torch-active-dark);
+    }
+    50% {
+        transform: translateY(0.5vmin);
+        filter: drop-shadow( 0 0 0.25rem #fff) drop-shadow( 0 0 0.75rem $colour-torch-active) drop-shadow( 0 0 1.25rem $colour-torch-active-dark);
+    }
+    100% {
+        transform: translateY(0px);
+        filter: drop-shadow( 0 0 0.125rem #fff) drop-shadow( 0 0 0.35rem $colour-torch-active) drop-shadow( 0 0 0.625rem $colour-torch-active-dark);
+    }
+}
+@keyframes burning {
+    0%   {
+        filter: drop-shadow( 0 0 0.25rem #fff) drop-shadow( 0 0 0.5rem $colour-torch-active) drop-shadow( 0 0 1.25rem $colour-torch-active-dark);
+    }
+    50% {
+        filter: drop-shadow( 0 0 0.5rem #fff) drop-shadow( 0 0 1rem $colour-torch-active) drop-shadow( 0 0 2.5rem $colour-torch-active-dark);
+    }
+    100% {
+        filter: drop-shadow( 0 0 0.25rem #fff) drop-shadow( 0 0 0.5rem $colour-torch-active) drop-shadow( 0 0 1.25rem $colour-torch-active-dark);
+    }
+}
+@keyframes flaring {
+    0% {
+        filter: drop-shadow( 0 0 0.25rem #fff) drop-shadow( 0 0 0.5rem $colour-torch-active) drop-shadow( 0 0 0.5rem $colour-torch-active-dark);
+    }
+    25% {
+        filter: drop-shadow( 0 0 1rem #fff) drop-shadow( 0 0 4rem $colour-torch-active) drop-shadow( 0 0 10rem $colour-torch-active-dark);
+    }
+    100% {
+        filter: drop-shadow( 0 0 0.25rem #fff) drop-shadow( 0 0 1rem $colour-torch-active) drop-shadow( 0 0 1.25rem $colour-torch-active-dark);
+    }
+}

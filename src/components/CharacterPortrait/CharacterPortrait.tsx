@@ -4,7 +4,7 @@ import { banCharacter, CharacterPortrait, CharacterPortraitType, deselectCharact
 import { ReactComponent as Frame } from './assets/frame.svg';
 import { useAppDispatch } from '../../app/hooks';
 
-const CharacterPortrait = (props: CharacterPortrait) => {
+const CharacterPortrait = (props: any) => {
   const { 
     character,
     type,

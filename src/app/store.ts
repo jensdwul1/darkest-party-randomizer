@@ -1,10 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import torchReducer from '../components/Torch/torchSlice';
 import countReducer from '../features/counter/counterSlice';
+import charactersReducer from '../components/CharacterPortrait/characterSlice';
+
 export const store = configureStore({
   reducer: {
     torch: torchReducer,
-    counter: countReducer
+    counter: countReducer,
+    characters: charactersReducer
   },
 });
 

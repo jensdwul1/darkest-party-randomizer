@@ -1,1 +1,27 @@
-.CharacterPortrait {}
+@import '../../styles/variables';
+
+.CharacterPortrait {
+    .Inner {
+
+    }
+    .Outer {
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        width: 16rem;
+        height: 16rem;
+        position: relative;
+    }
+}
+.CharacterPortraitFrame {
+
+}
+
+.state-banned {
+    .svgFrame {
+        fill: $colour-torch-active-darker;
+    }
+}
+.state-selected {
+    .svgFrame {
+        fill: $colour-torch-active-light;
+    }
+}

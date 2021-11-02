@@ -8,7 +8,7 @@
   background: $colour-torch-inactive-gradient;
   border: 0.5rem $colour-torch-inactive-dark solid;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr auto auto;
   gap: 0.5rem;
   align-content: center;
   justify-content: center;
